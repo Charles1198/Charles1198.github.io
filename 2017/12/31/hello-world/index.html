@@ -224,6 +224,23 @@
 <!-- City版安装代码已完成 -->
     
     
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id: "Hello World", // 可选。默认为 location.href
+        owner: 'Charles1198',
+        repo: 'Charles1198.github.io',
+        oauth: {
+            client_id: '9f87bb5bb4c07b25414b',
+            client_secret: '5bfadc1f801e67cda3733d069713275fbf7c797d',
+        },
+    })
+    gitment.render('container')
+
+</script>
+
     <!--PC版-->
 
     <!--PC版-->
