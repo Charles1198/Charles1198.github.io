@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        神奇的 Canvas · jiayueji
+        
+    </title>
+    <link rel="icon" href= /avatar/avatar_android.png>
+    <!-- TODO: 在font-face加载完毕后改变字体  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <!-- 提前加载place holder  -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url(/font/Oswald-Regular.ttf);
+        }
+    </style>
+    <style type="text/css">
+        .site-intro {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            overflow: hidden;
+            box-shadow: -0.1rem 0 0.5rem 0 rgba(0, 0, 0, 0.5);
+        }
+        .site-intro-placeholder {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0px;
+            width: calc(100% + 300px);
+            height: 100%;
+            background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+            background-position: center center;
+            transform: translate3d(-226px, 0, 0);
+            animation: gradient-move 2.5s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+    <link rel="stylesheet" href = /css/style.css?v=20171227 />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Charles 的小窝</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">神奇的 Canvas</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Charles 的小窝</a>
+</header>
+    <div id="container-wrapper-canvas" style="position:relative;">
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/avatar/bg.png)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            神奇的 Canvas
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/01/08</span>
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe604;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">
+                        &#xe601;
+                    </span>
+                    <span class="bdsharebuttonbox">
+                        <a href="#" class="bds_more shareText" data-cmd="more">Share</a>
+                    </span>
+                </span>
+            </div>
+        
+    </div>
+</div>
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <script>
+            var browser = {
+                    versions: function () {
+                        var u = window.navigator.userAgent;
+                        return {
+                            userAgent: u,
+                            trident: u.indexOf('Trident') > -1, //IE内核
+                            presto: u.indexOf('Presto') > -1, //opera内核
+                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+                            iPad: u.indexOf('iPad') > -1, //是否为iPad
+                            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+                            weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+                            uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+                        };
+                    }()
+                }
+
+            function fontLoaded(){
+                console.log('font loaded');
+                if (document.getElementsByClassName('site-intro-meta')) {
+                    document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+                    document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+                    var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+                        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+                        if (postIntroTags) {
+                            postIntroTags.classList.add('post-fade-in');
+                        }
+                        if (postIntroMeat) {
+                            postIntroMeat.classList.add('post-fade-in');
+                        }
+                    }
+                }
+                
+            console.log("userAgent:" + browser.versions.userAgent);
+            // UC不支持跨域，所以直接显示
+            if (browser.versions.uc) {
+                console.log("UCBrowser");
+                fontLoaded();
+            } else {
+                WebFont.load({
+                    custom: {
+                        families: ['Oswald-Regular']
+                    },
+                    loading: function () {  //所有字体开始加载
+                        // console.log('loading');
+                    },
+                    active: function () {  //所有字体已渲染
+                        fontLoaded();
+                    },
+                    inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+                        console.log('inactive: timeout');
+                        fontLoaded();
+                    },
+                    timeout: 7000 // Set the timeout to two seconds
+                });
+            }
+        </script>
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>最近在浏览掘金网站的时候看到掘金小册中有一个很有（便）意（宜）思的册子:<a href="https://juejin.im/book/5a0ab8e2f265da43111fbab2/section" target="_blank" rel="noopener">如何使用 Canvas 制作出炫酷的网页背景特效</a>，便想到给我的博客添加一个炫酷的背景。顺便学习一下 canvas 这个元素的使用。</p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>最终效果就在<a href="http://jiayueji.cn" target="_blank" rel="noopener">博客</a>上就能看到啦。下面来说一下实现方式。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>建议对 canvas 还不了解的同学去掘金小册上学习学习，我这里不再讲解。</p>
+<p>我的博客是用 Hexo 搭建的，使用了 <a href="http://firework.studio/archer-demo/" target="_blank" rel="noopener">Archer</a> 主题，博客的最上层样式作者定义在 layout.ejs 文件里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">   ...</span><br><span class="line">    &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>既然是在 canvas 里面画炫酷的背景，那就需要在这里添加一个 canvas 元素，并且和 div:class=”wrapper” 一样大。</p>
+<p>改造 layout.ejs 文件，用一个 div 将 div:class=”wrapper” 和我们的 canvas 包裹起来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;div id=&quot;container-wrapper-canvas&quot; style=&quot;position:relative;&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">        ...</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;canvas id=&quot;myCanvas&quot; style=&quot;position:absolute;left:0;top:0;z-index:0;pointer-events:none;&quot; /&gt;</span><br><span class="line">        &lt;script&gt;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>因为不想让 canvas 响应点击事件，所以在它的 style 里面加上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pointer-events:none;</span><br></pre></td></tr></table></figure>
+<p>先定义一些变量（以下代码一股脑塞到 script 标签里就行啦）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 屏幕宽高</span><br><span class="line">let container = document.getElementById(&apos;container-wrapper-canvas&apos;)</span><br><span class="line">let WIDTH = container.offsetWidth</span><br><span class="line">let HEIGHT = container.offsetHeight</span><br><span class="line">// canvas</span><br><span class="line">let canvas = document.getElementById(&apos;myCanvas&apos;)</span><br><span class="line">let context = canvas.getContext(&apos;2d&apos;)</span><br><span class="line">// 圆点数量</span><br><span class="line">let roundCount = HEIGHT / 10</span><br><span class="line">// 存放远点属性的数组</span><br><span class="line">let round = []</span><br><span class="line"></span><br><span class="line">// 令 canvas 铺满屏幕</span><br><span class="line">canvas.width = WIDTH</span><br><span class="line">canvas.height = HEIGHT</span><br></pre></td></tr></table></figure>
+<p>构造圆点位置颜色大小等属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 构造圆点位置颜色大小等属性</span><br><span class="line">function roundItem(index, x, y) &#123;</span><br><span class="line">    this.index = index</span><br><span class="line">    this.x = x</span><br><span class="line">    this.y = y</span><br><span class="line">    this.r = Math.random() * 4 + 1</span><br><span class="line">    let alpha = (Math.floor(Math.random() * 5) + 1) / 10 / 2</span><br><span class="line">    this.color = &quot;rgba(0,0,0,&quot; + alpha + &quot;)&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>画圆点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 画圆点</span><br><span class="line">roundItem.prototype.draw = function() &#123;</span><br><span class="line">    context.fillStyle = this.color</span><br><span class="line">    context.shadowBlur = this.r * 2</span><br><span class="line">    context.beginPath()</span><br><span class="line">    context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)</span><br><span class="line">    context.closePath()</span><br><span class="line">    context.fill()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里看着很熟悉，在做 android、iOS 开发自定义 View 的时候就遇到过类似的代码，在 draw() 函数里画图，这里我想到可以在移动端使用类似的方法画出类似的背景。</p>
+<p>这个时候调用初始化函数就可以看到静态的一个个小圆点了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 调用初始化函数</span><br><span class="line">init();</span><br><span class="line">function init() &#123;</span><br><span class="line">    for(var i = 0; i &lt; roundCount; i++ )&#123;</span><br><span class="line">        round[i] = new roundItem(i,Math.random() * WIDTH,Math.random() * HEIGHT);</span><br><span class="line">        round[i].draw();</span><br><span class="line">    &#125;</span><br><span class="line">    animate()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了让小圆点动起来，我们写下面的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 移动圆点</span><br><span class="line">roundItem.prototype.move = function () &#123;</span><br><span class="line">    // y方向移动速度与圆点半径成正比</span><br><span class="line">    this.y -= this.r / 20</span><br><span class="line"></span><br><span class="line">    // x方向移动分两个方向，移动速度与圆点半径成正比</span><br><span class="line">    if (this.index % 2 == 0) &#123;</span><br><span class="line">        this.x -= 0.08</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        this.x += this.r / 40</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 如果超出范围就把它拉回来</span><br><span class="line">    if (this.y &lt;= 0) &#123;</span><br><span class="line">        this.y += HEIGHT</span><br><span class="line">    &#125;</span><br><span class="line">    if (this.x &lt;= 0) &#123;</span><br><span class="line">        this.x += WIDTH</span><br><span class="line">    &#125;</span><br><span class="line">    if (this.x &gt;= WIDTH) &#123;</span><br><span class="line">        this.x -= WIDTH</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.draw()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 定义动画</span><br><span class="line">function animate() &#123;</span><br><span class="line">    context.clearRect(0, 0, WIDTH, HEIGHT);</span><br><span class="line">    for (var i in round) &#123;</span><br><span class="line">        round[i].move()</span><br><span class="line">    &#125;</span><br><span class="line">    requestAnimationFrame(animate)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个时候就可以看到动态的一个个小圆点了。</p>
+<p>是不是很炫酷呢。有空我再将它改造得更炫酷一点。</p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2017/12/31/再见2017/" title= 再见2017，你好2018 >
+                    <span>Previous Post</span>
+                    <span>再见2017，你好2018</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id: "神奇的 Canvas", // 可选。默认为 location.href
+        owner: 'Charles1198',
+        repo: 'Charles1198.github.io',
+        oauth: {
+            client_id: '9f87bb5bb4c07b25414b',
+            client_secret: '5bfadc1f801e67cda3733d069713275fbf7c797d',
+        },
+    })
+    gitment.render('container')
+
+</script>
+
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:charles@bqteam.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Charles1198" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="https://weibo.com/u/3953568239" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/" class="iconfont-archer zhihu" target="_blank" title="zhihu"></a>
+            
+        
+    
+        
+            
+                <a href="https://www.jianshu.com/u/4fc03b3feab2" class="iconfont-archer others" target="_blank" title="others"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+
+    <canvas id="myCanvas" style="position:absolute;left:0;top:0;z-index:0;pointer-events:none;" />
+    <script>
+        let container = document.getElementById('container-wrapper-canvas')
+        // 屏幕宽高
+        let WIDTH = container.offsetWidth
+        let HEIGHT = container.offsetHeight
+        // canvas
+        let canvas = document.getElementById('myCanvas')
+        let context = canvas.getContext('2d')
+        // 圆点数量
+        let roundCount = HEIGHT / 10
+        // 存放远点属性的数组
+        let round = []
+
+        canvas.width = WIDTH
+        canvas.height = HEIGHT
+
+        // 构造圆点位置颜色大小等属性
+        function roundItem(index, x, y) {
+            this.index = index;
+            this.x = x;
+            this.y = y;
+            this.r = Math.random() * 4 + 1;
+            let alpha = (Math.floor(Math.random() * 5) + 1) / 10 / 2;
+            this.color = "rgba(0,0,0," + alpha + ")";
+        }
+
+        // 画圆点
+        roundItem.prototype.draw = function() {
+            context.fillStyle = this.color;
+            context.shadowBlur = this.r * 2;
+            context.beginPath();
+            context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+            
+            context.closePath();
+            context.fill();
+        }
+
+        // 移动圆点
+        roundItem.prototype.move = function () {
+            // y方向移动速度与圆点半径成正比
+            this.y -= this.r / 20
+
+            // x方向移动分两个方向，移动速度与圆点半径成正比
+            if (this.index % 2 == 0) {
+                this.x -= 0.08
+            } else {
+                this.x += this.r / 40
+            }
+
+            // 如果超出范围就把它拉回来
+            if (this.y <= 0) {
+                this.y += HEIGHT
+            }
+            if (this.x <= 0) {
+                this.x += WIDTH
+            }
+            if (this.x >= WIDTH) {
+                this.x -= WIDTH
+            }
+
+            this.draw()
+        }
+
+        // 定义动画
+        function animate() {
+            context.clearRect(0, 0, WIDTH, HEIGHT);
+            for (var i in round) {
+                round[i].move()
+            }
+            requestAnimationFrame(animate)
+        }
+
+        init();
+        function init() {
+            for(var i = 0; i < roundCount; i++ ){
+                round[i] = new roundItem(i,Math.random() * WIDTH,Math.random() * HEIGHT);
+                round[i].draw();
+            }
+            animate()
+        }
+    </script>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果"><span class="toc-number">1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a></li></ol>
+    </div>
+    
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header sidebar-header-show-archive">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 3 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href= "/2018/01/08/神奇的canvas/" >神奇的 Canvas</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2017/12/31/再见2017/" >再见2017，你好2018</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2017/12/31/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+

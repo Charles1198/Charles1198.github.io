@@ -1,0 +1,161 @@
+# ========== Profile ========== #
+# avatar
+avatar: /avatar/avatar_android.png
+# author name
+author: Chalres
+# signature
+signature: 你的指尖，有改变世界的力量
+# SNS
+social:
+  email: charles@bqteam.com
+  github: //github.com/Charles1198
+  weibo: https://weibo.com/u/3953568239
+  zhihu: https://www.zhihu.com/
+  # facebook:
+  # twitter:
+  # instagram:
+  # stack-overflow:
+  # linkedin:
+  others: https://www.jianshu.com/u/4fc03b3feab2
+  # rss: /atom.xml
+# friends
+friends:
+  # friendA: //www.baidu.com
+  # friendB: //www.google.com
+  # friendC :
+about:
+  enable: true
+  image: '/avatar/bg.png'
+
+# ========== Site ========== #
+# title of the site
+SEO_title: jiayueji
+# main title
+main_title: Charles 的小窝
+# subtitle
+subtitle: 闷骚的程序猿
+# site haeder image
+site_header_image: '/avatar/bg.png'
+# post haeder image
+post_header_image: '/avatar/bg.png'
+# 404 image
+_404_image: '/intro/404.jpg'
+
+# ========== Comment ========== #
+# Fill in the field to enable the corresponding comment plugin
+# If you want to add other comment plugin, edit in "custom.ejs"
+comment:
+  # livere  site: https://livere.com/
+  livere_uid: 
+  # disqus  site: https://disqus.com/
+  disqus_shortname: 
+  # changyan  site: http://changyan.kuaizhan.com/
+  changyan_appid:
+  changyan_conf:
+  # gitment  site: https://github.com/imsun/gitment
+  gitment_owner: Charles1198
+  gitment_repo: Charles1198.github.io
+  gitment_client_id: 9f87bb5bb4c07b25414b
+  gitment_client_secret: 5bfadc1f801e67cda3733d069713275fbf7c797d
+  # youyan  site: http://www.uyan.cc/
+  youyan_uid: 
+
+# ========== Analytics ========== #
+# Busuanzi pv Analytics
+busuanzi: false
+# Baidu analytics
+baidu_analytics:
+# Google analytics
+google_analytics:
+# CNZZ analytics
+CNZZ_analytics:
+
+# ========== Others ========== #
+# favicon
+favicon: /avatar/avatar_android.png
+# truncate length (the default is 300)
+truncate_length: 60
+# enable toc
+toc: true
+
+# ========== 以下是作者原配置 ========== #
+
+# # ========== Profile ========== #
+# # avatar
+# avatar: /avatar/kumamon.jpg
+# # author name
+# author: fi3ework
+# # signature
+# signature: witness me
+# # SNS
+# social:
+#   email: 12345@qq.com
+#   github: //github.com/fi3ework
+#   weibo:
+#   # zhihu:
+#   # facebook:
+#   # twitter:
+#   # instagram:
+#   # stack-overflow:
+#   # linkedin:
+#   # others:
+#   rss: /atom.xml
+# # friends
+# friends:
+#   friendA: //www.baidu.com
+#   friendB: //www.google.com
+#   # friendC :
+# about:
+#   enable: true
+#   image: '/intro/about-page.jpg'
+
+# # ========== Site ========== #
+# # title of the site
+# SEO_title: fi3ework's Studio
+# # main title
+# main_title: fi3ework's Studio.
+# # subtitle
+# subtitle: it's better to burn out than to fade away
+# # site haeder image
+# site_header_image: 'http://oumn0o088.bkt.clouddn.com/intro-desktop.jpg'
+# # post haeder image
+# post_header_image: 'http://oumn0o088.bkt.clouddn.com/post-bg.jpg'
+# # 404 image
+# _404_image: 'http://oumn0o088.bkt.clouddn.com/404.jpg'
+
+# # ========== Comment ========== #
+# # Fill in the field to enable the corresponding comment plugin
+# # If you want to add other comment plugin, edit in "custom.ejs"
+# comment:
+#   # livere  site: https://livere.com/
+#   livere_uid:
+#   # disqus  site: https://disqus.com/
+#   disqus_shortname:
+#   # changyan  site: http://changyan.kuaizhan.com/
+#   changyan_appid:
+#   changyan_conf:
+#   # gitment  site: https://github.com/imsun/gitment
+#   gitment_owner:
+#   gitment_repo:
+#   gitment_client_id:
+#   gitment_client_secret:
+#   # youyan  site: http://www.uyan.cc/
+#   youyan_uid:
+
+# # ========== Analytics ========== #
+# # Busuanzi pv Analytics
+# busuanzi: false
+# # Baidu analytics
+# baidu_analytics:
+# # Google analytics
+# google_analytics:
+# # CNZZ analytics
+# CNZZ_analytics:
+
+# # ========== Others ========== #
+# # favicon
+# favicon: /assets/favicon.ico
+# # truncate length (the default is 300)
+# truncate_length:
+# # enable toc
+# toc: true
