@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        神奇的 Canvas 之 Android&amp;iOS · jiayueji
+        
+    </title>
+    <link rel="icon" href= /avatar/avatar_android.png>
+    <!-- TODO: 在font-face加载完毕后改变字体  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <!-- 提前加载place holder  -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url(/font/Oswald-Regular.ttf);
+        }
+    </style>
+    <style type="text/css">
+        .site-intro {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            overflow: hidden;
+            box-shadow: -0.1rem 0 0.5rem 0 rgba(0, 0, 0, 0.5);
+        }
+        .site-intro-placeholder {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0px;
+            width: calc(100% + 300px);
+            height: 100%;
+            background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+            background-position: center center;
+            transform: translate3d(-226px, 0, 0);
+            animation: gradient-move 2.5s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+    <link rel="stylesheet" href = /css/style.css?v=20171227 />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Charles 的小窝</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">神奇的 Canvas 之 Android&iOS</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Charles 的小窝</a>
+</header>
+    <div id="container-wrapper-canvas" style="position:relative;">
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/avatar/bg.png)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            神奇的 Canvas 之 Android&iOS
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/01/11</span>
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe604;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">
+                        &#xe601;
+                    </span>
+                    <span class="bdsharebuttonbox">
+                        <a href="#" class="bds_more shareText" data-cmd="more">Share</a>
+                    </span>
+                </span>
+            </div>
+        
+    </div>
+</div>
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <script>
+            var browser = {
+                    versions: function () {
+                        var u = window.navigator.userAgent;
+                        return {
+                            userAgent: u,
+                            trident: u.indexOf('Trident') > -1, //IE内核
+                            presto: u.indexOf('Presto') > -1, //opera内核
+                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+                            iPad: u.indexOf('iPad') > -1, //是否为iPad
+                            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+                            weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+                            uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+                        };
+                    }()
+                }
+
+            function fontLoaded(){
+                console.log('font loaded');
+                if (document.getElementsByClassName('site-intro-meta')) {
+                    document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+                    document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+                    var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+                        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+                        if (postIntroTags) {
+                            postIntroTags.classList.add('post-fade-in');
+                        }
+                        if (postIntroMeat) {
+                            postIntroMeat.classList.add('post-fade-in');
+                        }
+                    }
+                }
+                
+            console.log("userAgent:" + browser.versions.userAgent);
+            // UC不支持跨域，所以直接显示
+            if (browser.versions.uc) {
+                console.log("UCBrowser");
+                fontLoaded();
+            } else {
+                WebFont.load({
+                    custom: {
+                        families: ['Oswald-Regular']
+                    },
+                    loading: function () {  //所有字体开始加载
+                        // console.log('loading');
+                    },
+                    active: function () {  //所有字体已渲染
+                        fontLoaded();
+                    },
+                    inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+                        console.log('inactive: timeout');
+                        fontLoaded();
+                    },
+                    timeout: 7000 // Set the timeout to two seconds
+                });
+            }
+        </script>
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>最近公司事不多，自从前些天<a href="http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/" target="_blank" rel="noopener">学习使用 canvas</a> 之后这几天又抽空实现了几个类似的效果：</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/round.gif?raw=true" alt=""><br><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/segment.gif?raw=true" alt=""><br><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/circle.gif?raw=true" alt=""><br><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/line.gif?raw=true" alt=""></p>
+<p>是用 Vue 实现的，<a href="https://github.com/Charles1198/VueDemo/tree/master/src/components/canvas" target="_blank" rel="noopener">代码在这里</a>，实际效果还是很流畅的，只是 .gif 图片看起来有些掉帧。</p>
+<p>今天闲来无事就想着将上述效果实现在 Android 和 iOS 上试试看。</p>
+<h1 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h1><p>在 Android 中首先想到的就是自定义 View 来实现。首先定义圆点的属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Point &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 圆点坐标及半径、透明度（黑色）</span><br><span class="line">     */</span><br><span class="line">    private float x;</span><br><span class="line">    private float y;</span><br><span class="line">    private float r;</span><br><span class="line">    private int alpha;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 圆点横向和纵向移动速度</span><br><span class="line">     */</span><br><span class="line">    private float vx = (float) (Math.random() - 0.5);</span><br><span class="line">    private float vy = (float) Math.random();</span><br><span class="line"></span><br><span class="line">    public Point(float x, float y, float r, int alpha) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">        this.y = y;</span><br><span class="line">        this.r = r;</span><br><span class="line">        this.alpha = alpha;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // get/set 方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>自定义 View MovingPointView 继承自 View<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class MovingPointView extends View &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 画布长宽</span><br><span class="line">     */</span><br><span class="line">    private int width;</span><br><span class="line">    private int height;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 画笔</span><br><span class="line">     */</span><br><span class="line">    private Paint paint;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 圆点数量</span><br><span class="line">     */</span><br><span class="line">    private int pointCount = 1000;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 圆点数组</span><br><span class="line">     */</span><br><span class="line">    private List&lt;Point&gt; pointList = new ArrayList&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建画笔<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void initPatin() &#123;</span><br><span class="line">    paint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">    initTimer();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在构造方法里调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public MovingPointView(Context context, @Nullable AttributeSet attrs) &#123;</span><br><span class="line">    super(context, attrs);</span><br><span class="line">    initPatin();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来创建圆点数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private void initPoint() &#123;</span><br><span class="line">    if (pointList.size() &gt; 0) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; pointCount; i++) &#123;</span><br><span class="line">        Point p = new Point((float) (Math.random() * width), (float) (Math.random() * height),</span><br><span class="line">                (float) (Math.random() * 15), (int) (Math.random() * 120 + 20));</span><br><span class="line">        pointList.add(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于要保证圆点的坐标在 View 范围之内，所以要等到 onMeasure 方法执行后得到 View 的宽高再创建圆点数组。因为 onMeasure 方法会被执行多次，所以在 initPoint 方法中要判断 pointList 如果已经构造过就不再构造。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</span><br><span class="line">    super.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    width = this.getMeasuredWidth();</span><br><span class="line">    height = this.getMeasuredHeight();</span><br><span class="line"></span><br><span class="line">    initPoint();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时调用 onDraw 方法就可以画出点点啦。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">    super.onDraw(canvas);</span><br><span class="line"></span><br><span class="line">    for (Point p : pointList) &#123;</span><br><span class="line">        paint.setARGB(p.getAlpha(), 0, 0, 0);</span><br><span class="line">        paint.setStrokeWidth(p.getR());</span><br><span class="line">        canvas.drawCircle(p.getX(), p.getY(), p.getR(), paint);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过这时圆点还是静态的不会动，要让圆点动起来还需要为每一个圆点加上动画……扯淡，并不是。跟<a href="http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/" target="_blank" rel="noopener">《神奇的 Canvas》</a>这篇文章中一样，我们通过定时改变圆点的坐标并刷新 View 的方法来实现动画。</p>
+<p>向 Point 类中加入移动方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 移动圆点，范围不超过画布</span><br><span class="line">*</span><br><span class="line">* @param width 画布宽</span><br><span class="line">* @param height 画布高</span><br><span class="line">*/</span><br><span class="line">public void move(int width, int height) &#123;</span><br><span class="line">    if (x &lt;= 0 || x &gt;= width) &#123;</span><br><span class="line">        vx = 0 - vx;</span><br><span class="line">    &#125;</span><br><span class="line">    if (y &lt;= 0) &#123;</span><br><span class="line">        y += height;</span><br><span class="line">    &#125;</span><br><span class="line">    this.x += vx;</span><br><span class="line">    this.y -= vy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>定时使用 Timer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 定时器</span><br><span class="line">*/</span><br><span class="line">private Timer timer;</span><br><span class="line"></span><br><span class="line">private void initTimer() &#123;</span><br><span class="line">    @SuppressLint(&quot;HandlerLeak&quot;)</span><br><span class="line">    final Handler mainHandler = new Handler() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            //刷新 View</span><br><span class="line">            invalidate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    timer = new Timer();</span><br><span class="line">    timer.schedule(new TimerTask() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            //run() 方法执行在非主线程，要刷新 view 要借助 Handler</span><br><span class="line">            mainHandler.sendMessage(new Message());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 60, 60);//延时 60 毫秒，每 60 毫秒执行一次</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>记得在 View 被销毁的时候释放定时器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onDetachedFromWindow() &#123;</span><br><span class="line">    super.onDetachedFromWindow();</span><br><span class="line"></span><br><span class="line">    if (timer != null) &#123;</span><br><span class="line">        timer.cancel();</span><br><span class="line">        timer = null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后在每次画圆点的时候移动一下圆点的位置，这样在下一次画圆点的时候就会有动画效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">    super.onDraw(canvas);</span><br><span class="line"></span><br><span class="line">    for (Point p : pointList) &#123;</span><br><span class="line">        paint.setARGB(p.getAlpha(), 0, 0, 0);</span><br><span class="line">        paint.setStrokeWidth(p.getR());</span><br><span class="line">        canvas.drawCircle(p.getX(), p.getY(), p.getR(), paint);</span><br><span class="line"></span><br><span class="line">        //每次画完就移动圆点</span><br><span class="line">        p.move(width, height);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最终效果如下：</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/view.gif?raw=true" alt=""></p>
+<p>由于是 .gif 图片，看起来会不流畅，其实模拟器上还是很流畅的。</p>
+<p>此时圆点的数量只有 60 个，当我把圆点的数量调整到 1000 个的时候，动画就有些许的卡顿了，这时我想到了 SurfaceView。将 MovingPointView 的父类换成 SurfaceView 会流畅很多，但是这不是本文的重点就不展开了，代码在<a href="https://github.com/Charles1198/AppForLearn-android/blob/master/app/src/main/java/com/bqteam/appforlearn/function/canvas/MovingPointSurfaceView.java" target="_blank" rel="noopener">这里</a>。</p>
+<h1 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h1><p>由于在 iOS 上的实现方式跟 Android 很类似，代码我就不贴了，在<a href="https://github.com/Charles1198/AppForLearn-iOS/blob/master/AppForLearn/functions/MovingPointView.swift" target="_blank" rel="noopener">这里</a>就可以找到。</p>
+<p>最后实现效果</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/ios.gif?raw=true" alt=""></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2018/01/08/神奇的canvas/" title= 神奇的 Canvas >
+                    <span>Previous Post</span>
+                    <span>神奇的 Canvas</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        // id: "神奇的 Canvas 之 Android&iOS", // 可选。默认为 location.href
+        owner: 'Charles1198',
+        repo: 'Charles1198.github.io',
+        oauth: {
+            client_id: '9f87bb5bb4c07b25414b',
+            client_secret: '5bfadc1f801e67cda3733d069713275fbf7c797d',
+        },
+    })
+    gitment.render('container')
+
+</script>
+
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:charles@bqteam.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Charles1198" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="https://weibo.com/u/3953568239" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/" class="iconfont-archer zhihu" target="_blank" title="zhihu"></a>
+            
+        
+    
+        
+            
+                <a href="https://www.jianshu.com/u/4fc03b3feab2" class="iconfont-archer others" target="_blank" title="others"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+
+    <canvas id="myCanvas" style="position:absolute;left:0;top:0;z-index:0;pointer-events:none;" />
+    <script>
+        let container = document.getElementById('container-wrapper-canvas')
+        // 屏幕宽高
+        let WIDTH = container.offsetWidth
+        let HEIGHT = container.offsetHeight
+        // canvas
+        let canvas = document.getElementById('myCanvas')
+        let context = canvas.getContext('2d')
+        // 圆点数量
+        let roundCount = HEIGHT / 10
+        // 存放远点属性的数组
+        let round = []
+
+        canvas.width = WIDTH
+        canvas.height = HEIGHT
+
+        // 构造圆点位置颜色大小等属性
+        function roundItem(index, x, y) {
+            this.index = index;
+            this.x = x;
+            this.y = y;
+            this.r = Math.random() * 4 + 1;
+            let alpha = (Math.floor(Math.random() * 5) + 1) / 10 / 2;
+            this.color = "rgba(0,0,0," + alpha + ")";
+        }
+
+        // 画圆点
+        roundItem.prototype.draw = function() {
+            context.fillStyle = this.color;
+            context.shadowBlur = this.r * 2;
+            context.beginPath();
+            context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+            
+            context.closePath();
+            context.fill();
+        }
+
+        // 移动圆点
+        roundItem.prototype.move = function () {
+            // y方向移动速度与圆点半径成正比
+            this.y -= this.r / 20
+
+            // x方向移动分两个方向，移动速度与圆点半径成正比
+            if (this.index % 2 == 0) {
+                this.x -= 0.08
+            } else {
+                this.x += this.r / 40
+            }
+
+            // 如果超出范围就把它拉回来
+            if (this.y <= 0) {
+                this.y += HEIGHT
+            }
+            if (this.x <= 0) {
+                this.x += WIDTH
+            }
+            if (this.x >= WIDTH) {
+                this.x -= WIDTH
+            }
+
+            this.draw()
+        }
+
+        // 定义动画
+        function animate() {
+            context.clearRect(0, 0, WIDTH, HEIGHT);
+            for (var i in round) {
+                round[i].move()
+            }
+            requestAnimationFrame(animate)
+        }
+
+        init();
+        function init() {
+            for(var i = 0; i < roundCount; i++ ){
+                round[i] = new roundItem(i,Math.random() * WIDTH,Math.random() * HEIGHT);
+                round[i].draw();
+            }
+            animate()
+        }
+    </script>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android"><span class="toc-number">1.</span> <span class="toc-text">Android</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS"><span class="toc-number">2.</span> <span class="toc-text">iOS</span></a></li></ol>
+    </div>
+    
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header sidebar-header-show-archive">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 4 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2018/01/11/神奇的canvas之Android&iOS/" >神奇的 Canvas 之 Android&iOS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/08</span><a class="archive-post-title" href= "/2018/01/08/神奇的canvas/" >神奇的 Canvas</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2017/12/31/再见2017/" >再见2017，你好2018</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/31</span><a class="archive-post-title" href= "/2017/12/31/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
