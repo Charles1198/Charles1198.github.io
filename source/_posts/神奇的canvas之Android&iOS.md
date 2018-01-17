@@ -1,7 +1,7 @@
 ---
 title: 神奇的 Canvas 之 Android&iOS
 date: 2018-1-11 18:00:00
-tags:
+tags: js
 ---
 
 最近公司事不多，自从前些天[学习使用 canvas](http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/) 之后这几天又抽空实现了几个类似的效果：

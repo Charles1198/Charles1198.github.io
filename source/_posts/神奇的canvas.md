@@ -1,7 +1,7 @@
 ---
 title: 神奇的 Canvas
 date: 2018-1-8 18:00:00
-tags:
+tags: js
 ---
 最近在浏览掘金网站的时候看到掘金小册中有一个很有（便）意（宜）思的册子:[如何使用 Canvas 制作出炫酷的网页背景特效](https://juejin.im/book/5a0ab8e2f265da43111fbab2/section)，便想到给我的博客添加一个炫酷的背景。顺便学习一下 canvas 这个元素的使用。
 
