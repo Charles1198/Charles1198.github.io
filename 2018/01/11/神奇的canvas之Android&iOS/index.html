@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android,iOS,">
+  <meta name="keywords" content="iOS,Android,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="最近公司事不多，自从前些天学习使用 canvas 之后这几天又抽空实现了几个类似的效果：">
-<meta name="keywords" content="Android,iOS">
+<meta name="keywords" content="iOS,Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神奇的 Canvas 之 Android&amp;iOS">
 <meta property="og:url" content="http://jiayueji.cn/2018/01/11/神奇的canvas之Android&iOS/index.html">
@@ -424,7 +424,7 @@
       
 
       
-        <p>最近公司事不多，自从前些天<a href="http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/" target="_blank" rel="noopener">学习使用 canvas</a> 之后这几天又抽空实现了几个类似的效果：</p>
+        <p>最近公司事不多，自从前些天<a href="http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/">学习使用 canvas</a> 之后这几天又抽空实现了几个类似的效果：</p>
 <a id="more"></a>
 <p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/round.gif?raw=true" alt=""><br><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/segment.gif?raw=true" alt=""><br><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/circle.gif?raw=true" alt=""><br><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/line.gif?raw=true" alt=""></p>
 <p>是用 Vue 实现的，<a href="https://github.com/Charles1198/VueDemo/tree/master/src/components/canvas" target="_blank" rel="noopener">代码在这里</a>，实际效果还是很流畅的， 只是 .gif 图片看起来有些掉帧。</p>
@@ -443,7 +443,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</span><br><span class="line">    super.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    width = this.getMeasuredWidth();</span><br><span class="line">    height = this.getMeasuredHeight();</span><br><span class="line"></span><br><span class="line">    initPoint();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>此时调用 onDraw 方法就可以画出点点啦。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">    super.onDraw(canvas);</span><br><span class="line"></span><br><span class="line">    for (Point p : pointList) &#123;</span><br><span class="line">        paint.setARGB(p.getAlpha(), 0, 0, 0);</span><br><span class="line">        paint.setStrokeWidth(p.getR());</span><br><span class="line">        canvas.drawCircle(p.getX(), p.getY(), p.getR(), paint);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不过这时圆点还是静态的不会动，要让圆点动起来还需要为每一个圆点加上动画……扯淡，并不是。 跟<a href="http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/" target="_blank" rel="noopener">《神奇的 Canvas》</a>这篇文章中一样，我们通过定时改变圆点的坐标并刷新 View 的方法来实现动画。</p>
+<p>不过这时圆点还是静态的不会动，要让圆点动起来还需要为每一个圆点加上动画……扯淡，并不是。 跟<a href="http://jiayueji.cn/2018/01/08/%E7%A5%9E%E5%A5%87%E7%9A%84canvas/">《神奇的 Canvas》</a>这篇文章中一样，我们通过定时改变圆点的坐标并刷新 View 的方法来实现动画。</p>
 <p>向 Point 类中加入移动方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 移动圆点，范围不超过画布</span><br><span class="line">*</span><br><span class="line">* @param width 画布宽</span><br><span class="line">* @param height 画布高</span><br><span class="line">*/</span><br><span class="line">public void move(int width, int height) &#123;</span><br><span class="line">    if (x &lt;= 0 || x &gt;= width) &#123;</span><br><span class="line">        vx = 0 - vx;</span><br><span class="line">    &#125;</span><br><span class="line">    if (y &lt;= 0) &#123;</span><br><span class="line">        y += height;</span><br><span class="line">    &#125;</span><br><span class="line">    this.x += vx;</span><br><span class="line">    this.y -= vy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>定时使用 Timer</p>
@@ -476,9 +476,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
             <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
         </div>
       
@@ -589,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
