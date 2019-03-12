@@ -82,15 +82,15 @@
 <meta name="description" content="一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。">
 <meta name="keywords" content="学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令速查表">
+<meta property="og:title" content="《数据结构与算法之美》学习笔记">
 <meta property="og:url" content="http://jiayueji.cn/2019/03/12/《数据结构与算法之美》学习笔记/index.html">
 <meta property="og:site_name" content="Charles">
 <meta property="og:description" content="一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure.jpg?raw=true">
-<meta property="og:updated_time" content="2019-03-12T11:12:59.794Z">
+<meta property="og:updated_time" content="2019-03-12T15:30:16.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令速查表">
+<meta name="twitter:title" content="《数据结构与算法之美》学习笔记">
 <meta name="twitter:description" content="一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。">
 <meta name="twitter:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure.jpg?raw=true">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>Git常用命令速查表 | Charles</title>
+  <title>《数据结构与算法之美》学习笔记 | Charles</title>
   
 
 
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git常用命令速查表</h1>
+          <h1 class="post-title" itemprop="name headline">《数据结构与算法之美》学习笔记</h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,7 @@
 
           
           
-             <span id="/2019/03/12/《数据结构与算法之美》学习笔记/" class="leancloud_visitors" data-flag-title="Git常用命令速查表">
+             <span id="/2019/03/12/《数据结构与算法之美》学习笔记/" class="leancloud_visitors" data-flag-title="《数据结构与算法之美》学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  391
+                  1.2k
                 </span>
               
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -414,7 +414,7 @@
 <p>数据结构和算法的关系：</p>
 <p><strong>数据结构是为算法服务的，算法要作用在特定的数据结构之上</strong>。</p>
 <p>数据结构是静态的，它只是组织数据的一种方式。如果不在它的基础上操作、构建算法，孤立存在的数据结构就是没用的。</p>
-<p>下图几乎涵盖了所有数据结构和算法书籍都会讲到的知识点： <img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure.jpg?raw=true"></p>
+<p>下图几乎涵盖了所有数据结构和算法书籍都会讲到的知识点： <img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure.jpg?raw=true" width="600"></p>
 <p>作者总结的 20 个最常用的、最基础数据结构与算法：</p>
 <p>10 个数据结构：</p>
 <p>数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie 树</p>
@@ -428,6 +428,51 @@
 <li><p>坚持</p>
 </li>
 <li><p>反复迭代，不断沉淀</p>
+</li>
+</ol>
+<h1 id="03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><a href="#03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？" class="headerlink" title="03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"></a>03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</h1><p>使用<strong>时间、空间复杂度分析</strong>来衡量算法代码的执行效率。</p>
+<p><strong>复杂度分析是整个算法学习的精髓</strong></p>
+<h2 id="大-O-复杂度表示法"><a href="#大-O-复杂度表示法" class="headerlink" title="大 O 复杂度表示法"></a>大 O 复杂度表示法</h2><p>算法的执行效率，粗略地讲，就是算法代码执行的时间。</p>
+<p>举例 1：如下代码运行时间为 T(n) = (2n+3)*unit_time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int cal(int n) &#123;</span><br><span class="line">  int sum = 0;</span><br><span class="line">  int i = 1;</span><br><span class="line">  for (; i &lt;= n; ++i) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">  &#125;</span><br><span class="line">  return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>举例 2：如下代码运行时间为 T(n) = (2n^2+2n+3)*unit_time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int cal(int n) &#123;</span><br><span class="line">  int sum = 0;</span><br><span class="line">  int i = 1;</span><br><span class="line">  int j = 1;</span><br><span class="line">  for (; i &lt;= n; ++i) &#123;</span><br><span class="line">    j = 1;</span><br><span class="line">    for (; j &lt;= n; ++j) &#123;</span><br><span class="line">      sum = sum +  i * j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从这两段代码运行时间总结出规律：<strong>所有代码的执行时间 T(n) 与每行代码的执行次数 n 成正比</strong>，即 T(n) = O(f(n))，这就是<strong>大 O 时间复杂度表示法</strong>，他并不表示代码真正的运行时间，而是<strong>代码执行时间随数据规模增长的变化趋势</strong>。</p>
+<p>如果用大 O 表示法表示刚讲的那两段代码的时间复杂度，就可以记为：T(n) = O(n)；T(n) = O(n2)。</p>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>三个小技巧：</p>
+<ol>
+<li><p>只关注循环执行次数最多的一段代码</p>
+</li>
+<li><p>加法法则：总复杂度等于量级最大的那段代码的复杂度</p>
+<p>T1(n)=O(f(n))，T2(n)=O(g(n))；那么 T(n)=T1(n)+T2(n)=max(O(f(n)), g(n)))</p>
+</li>
+<li><p>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</p>
+<p>T(n)=T1(n)<em>T2(n)=O(f(n))</em>O(g(n))=O(f(n)*g(n))</p>
+</li>
+</ol>
+<h2 id="几种常见时间复杂度实例分析"><a href="#几种常见时间复杂度实例分析" class="headerlink" title="几种常见时间复杂度实例分析"></a>几种常见时间复杂度实例分析</h2><p>常见的复杂度量级（按数量级递增）</p>
+<ul>
+<li>常量阶 O(1)</li>
+<li>指数阶 O(logn)</li>
+<li>线性阶 O(n)</li>
+<li>线性对数阶 O(nlogn)</li>
+<li>平方阶 O(n^2)</li>
+<li>立方阶 O(n^3)</li>
+<li>k 次方阶 O(n^k)</li>
+<li>指数阶 O(2^n)</li>
+<li>阶乘阶 O(n!)</li>
+</ul>
+<p>其中<strong>指数阶</strong>和<strong>阶乘阶</strong>被称为<strong>非多项式量级</strong>，其余为<strong>多项式量级</strong>。我们主要来看几种常见的多项式时间复杂度。</p>
+<ol>
+<li><p>O(1)</p>
+<p>O(1) 只是常量级时间复杂度的一种表示方法，并不是指只执行了一行代码。<strong>一般情况下，只要算法中不存在循环语句、递归语句，即使有成千上万行的代码，其时间复杂度也是 Ο(1)</strong>。 举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int i = 8;</span><br><span class="line">int j = 6;</span><br><span class="line">int sum = i + j;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>O(logn)、O(nlogn)</p>
+<p>对数阶时间复杂度非常常见，同时也是最难分析的一种时间复杂度。举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i=1;</span><br><span class="line">while (i &lt;= n)  &#123;</span><br><span class="line">   i = i * 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析：从代码中可以看出，变量 i 的值从 1 开始取，每循环一次就乘以 2。当大于 n 时，循环结束。相当于求 2^x=n，解得 x=log₂n，所以这段代码时间复杂度为 O(log₂n)。</p>
+<p>实际上，不管是以 2 为底、以 3 为底，还是以 10 为底，我们可以把所有对数阶的时间复杂度都记为 O(logn)。因为 log₃n=log₃2*log₂n，而 log₃2 是一个常量，可以忽略。</p>
 </li>
 </ol>
 
@@ -637,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01-为什么要学习数据结构和算法？"><span class="nav-number">1.</span> <span class="nav-text">01 | 为什么要学习数据结构和算法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02-如何抓住重点，系统高效地学习数据结构与算法？"><span class="nav-number">2.</span> <span class="nav-text">02 | 如何抓住重点，系统高效地学习数据结构与算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习技巧："><span class="nav-number">2.0.1.</span> <span class="nav-text">学习技巧：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01-为什么要学习数据结构和算法？"><span class="nav-number">1.</span> <span class="nav-text">01 | 为什么要学习数据结构和算法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02-如何抓住重点，系统高效地学习数据结构与算法？"><span class="nav-number">2.</span> <span class="nav-text">02 | 如何抓住重点，系统高效地学习数据结构与算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习技巧："><span class="nav-number">2.0.1.</span> <span class="nav-text">学习技巧：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="nav-number">3.</span> <span class="nav-text">03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大-O-复杂度表示法"><span class="nav-number">3.1.</span> <span class="nav-text">大 O 复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">3.2.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见时间复杂度实例分析"><span class="nav-number">3.3.</span> <span class="nav-text">几种常见时间复杂度实例分析</span></a></li></ol></li></div>
             
 
           </div>
@@ -672,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.7k</span>
+    <span title="Site words total count">17.5k</span>
   
 </div>
 
