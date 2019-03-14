@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure.jpg?raw=true">
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure_compare.jpg?raw=true">
-<meta property="og:updated_time" content="2019-03-14T01:10:26.210Z">
+<meta property="og:updated_time" content="2019-03-14T13:18:10.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《数据结构与算法之美》学习笔记">
 <meta name="twitter:description" content="一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。">
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  3.6k
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  13
                 </span>
               
             </div>
@@ -409,8 +409,8 @@
       
         <p>一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。</p>
 <a id="more"></a>
-<h1 id="01-为什么要学习数据结构和算法？"><a href="#01-为什么要学习数据结构和算法？" class="headerlink" title="01 | 为什么要学习数据结构和算法？"></a>01 | 为什么要学习数据结构和算法？</h1><p>这一节没啥</p>
-<h1 id="02-如何抓住重点，系统高效地学习数据结构与算法？"><a href="#02-如何抓住重点，系统高效地学习数据结构与算法？" class="headerlink" title="02 | 如何抓住重点，系统高效地学习数据结构与算法？"></a>02 | 如何抓住重点，系统高效地学习数据结构与算法？</h1><p>作者对数据结构和算法的定义：</p>
+<h1 id="为什么要学习数据结构和算法？"><a href="#为什么要学习数据结构和算法？" class="headerlink" title="为什么要学习数据结构和算法？"></a>为什么要学习数据结构和算法？</h1><p>这一节没啥</p>
+<h1 id="如何抓住重点，系统高效地学习数据结构与算法？"><a href="#如何抓住重点，系统高效地学习数据结构与算法？" class="headerlink" title="如何抓住重点，系统高效地学习数据结构与算法？"></a>如何抓住重点，系统高效地学习数据结构与算法？</h1><p>作者对数据结构和算法的定义：</p>
 <p>从广义上讲，数据结构就是指<strong>一组数据的存储结构</strong>。算法就是<strong>操作数据的一组方法</strong>。</p>
 <p>数据结构和算法的关系：</p>
 <p><strong>数据结构是为算法服务的，算法要作用在特定的数据结构之上</strong>。</p>
@@ -431,7 +431,7 @@
 <li><p>反复迭代，不断沉淀</p>
 </li>
 </ol>
-<h1 id="03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><a href="#03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？" class="headerlink" title="03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"></a>03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</h1><p>使用<strong>时间、空间复杂度分析</strong>来衡量算法代码的执行效率。</p>
+<h1 id="复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><a href="#复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？" class="headerlink" title="复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"></a>复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</h1><p>使用<strong>时间、空间复杂度分析</strong>来衡量算法代码的执行效率。</p>
 <p><strong>复杂度分析是整个算法学习的精髓</strong></p>
 <h2 id="大-O-复杂度表示法"><a href="#大-O-复杂度表示法" class="headerlink" title="大 O 复杂度表示法"></a>大 O 复杂度表示法</h2><p>算法的执行效率，粗略地讲，就是算法代码执行的时间。</p>
 <p>举例 1：如下代码运行时间为 T(n) = (2n+3)*unit_time</p>
@@ -487,6 +487,100 @@
 <p>上段代码第二行申请了一个空间存储变量 i，但是他是常量阶，可以忽略。第三行代码申请了一个大小为 n 的 int 类型数组，除此之外其他代码没有占用更多空间，所以该段代码的空间复杂度为 O(n)。</p>
 <p>我们常见的空间复杂度就是 O(1)、O(n)、O(n2 )，像 O(logn)、O(nlogn) 这样的对数阶复杂度平时都用不到。而且，空间复杂度分析比时间复杂度分析要简单很多。所以，对于空间复杂度，掌握这些内容已经足够了。</p>
 <p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure_compare.jpg?raw=true" width="600"></p>
+<h1 id="复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><a href="#复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度" class="headerlink" title="复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"></a>复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</h1><p>4 个知识点：</p>
+<ul>
+<li>最好情况时间复杂度</li>
+<li>最坏情况时间复杂度</li>
+<li>平均情况时间复杂度</li>
+<li>均摊时间复杂度</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> // n 表示数组 array 的长度</span><br><span class="line">int find(int[] array, int n, int x) &#123;</span><br><span class="line">  int i = 0;</span><br><span class="line">  int pos = -1;</span><br><span class="line">  for (; i &lt; n; ++i) &#123;</span><br><span class="line">    if (array[i] == x) pos = i;</span><br><span class="line">  &#125;</span><br><span class="line">  return pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码遍历 array 并从中查找变量 x 出现的位置。如果没有找到，就返回 -1。这段代码复杂度为 O(n)。</p>
+<p>优化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// n 表示数组 array 的长度</span><br><span class="line">int find(int[] array, int n, int x) &#123;</span><br><span class="line">  int i = 0;</span><br><span class="line">  int pos = -1;</span><br><span class="line">  for (; i &lt; n; ++i) &#123;</span><br><span class="line">    if (array[i] == x) &#123;</span><br><span class="line">       pos = i;</span><br><span class="line">       break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码中，要查找的变量 x 可能出现在数组的任意位置。如果数组中第一个元素正好是要查找的变量 x，那就不需要继续遍历剩下的 n-1 个数据了，那时间复杂度就是 O(1)。但如果数组中不存在变量 x，那我们就需要把整个数组都遍历一遍，时间复杂度就成了 O(n)。所以，不同的情况下，这段代码的时间复杂度是不一样的。</p>
+<p>为了表示代码在不同情况下的不同时间复杂度，需要引入三个概念：<strong>最好情况时间复杂度</strong>、<strong>最坏情况时间复杂度</strong>和<strong>平均情况时间复杂度</strong>。</p>
+<p>尝试计算下上段代码的平均情况时间复杂度：</p>
+<p>假设 x 在数组中和不在数组中的概率相同，即都是 1/2，而 x 在数组中各个位置出现的概率也相同，即都是 1/2n。若 x 出现在数组中，那么出现在第 p 位置时，时间复杂度就是 p/n2，若 x 不出现在数组中，还是要将数组遍历一遍，时间复杂度就是 n/2。那么将各种情况都考虑一下的话，上段代码的时间复杂度就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1/2n + 2/2n + ... + n/2n = (3n + 1)/n</span><br></pre></td></tr></table></figure>
+<p>用大 O 表示法还是 O(n)。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// array 表示一个长度为 n 的数组</span><br><span class="line">// 代码中的 array.length 就等于 n</span><br><span class="line">int[] array = new int[n];</span><br><span class="line">int count = 0;</span><br><span class="line"></span><br><span class="line">void insert(int val) &#123;</span><br><span class="line">   if (count == array.length) &#123;</span><br><span class="line">      int sum = 0;</span><br><span class="line">      for (int i = 0; i &lt; array.length; ++i) &#123;</span><br><span class="line">         sum = sum + array[i];</span><br><span class="line">      &#125;</span><br><span class="line">      array[0] = sum;</span><br><span class="line">      count = 1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   array[count] = val;</span><br><span class="line">   ++count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码实现了一个往数组中插入数据的功能。当数组满了之后，也就是代码中的 count == array.length 时，我们用 for 循环遍历数组求和，并清空数组，将求和之后的 sum 值放到数组的第一个位置，然后再将新的数据插入。但如果数组一开始就有空闲空间，则直接将数据插入数组。</p>
+<p>这段代码的平均复杂度是 O(1)。</p>
+<p>使用摊还时间复杂度分析：每一次 O(n) 的插入操作，都会跟着 n-1 次 O(1)的插入操作，所以把耗时多的那次操作均摊到接下来的 n-1 次耗时少的操作上，均摊下来，这一组连续的操作的均摊时间复杂度就是 O(1)。</p>
+<p><strong>均摊时间复杂度就是一种特殊的平均时间复杂度</strong>。</p>
+<h1 id="数组：为什么很多编程语言中数组都从-0-开始编号？"><a href="#数组：为什么很多编程语言中数组都从-0-开始编号？" class="headerlink" title="数组：为什么很多编程语言中数组都从 0 开始编号？"></a>数组：为什么很多编程语言中数组都从 0 开始编号？</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><ul>
+<li><p>数组</p>
+<p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
+<ul>
+<li><p>线性表</p>
+<p>数组，链表、队列、栈。</p>
+</li>
+<li><p>非线性表</p>
+<p>二叉树、堆、图。</p>
+</li>
+<li><p>连续的内存空间和相同类型的数据</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="警惕数组的访问越界问题"><a href="#警惕数组的访问越界问题" class="headerlink" title="警惕数组的访问越界问题"></a>警惕数组的访问越界问题</h2><p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(; i&lt;=<span class="number">3</span>; i++)&#123;</span><br><span class="line">        arr[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"hello world\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你发现问题了吗？这段代码的运行结果并非是打印三行“helloword”，而是会无限打印“hello world”，这是为什么呢？</p>
+<p>我们知道（在看答案之前我也是不知道的），在 C 语言中，只要不是访问受限的内存，所有的内存空间都是可以自由访问的。根据我们前面讲的数组寻址公式，a[3] 也会被定位到某块不属于数组的内存地址上，而这个地址正好是存储变量 i 的内存地址，那么 a[3]=0 就相当于 i=0，所以就会导致代码无限循环。</p>
+<h2 id="java-小知识"><a href="#java-小知识" class="headerlink" title="java 小知识"></a>java 小知识</h2><p>ArrayList<strong>将很多数组操作的细节封装起来</strong>，还支持<strong>动态扩容</strong>：每次存储空间不够的时候，它都会将空间自动扩容为 1.5 倍大小。</p>
+<p>这里需要注意一点，因为扩容操作涉及内存申请和数据搬移，是比较耗时的。所以，如果事先能确定需要存储的数据大小，最好在创建 ArrayList 的时候事先指定数据大小。</p>
+<p>举例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;User&gt; users = <span class="keyword">new</span> ArrayList(<span class="number">10000</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; ++i) &#123;</span><br><span class="line">    users.add(xxx);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上段代码，事先指定数据大小可以省掉很多次内存申请和数据搬移操作。</p>
+<h2 id="解答开篇"><a href="#解答开篇" class="headerlink" title="解答开篇"></a>解答开篇</h2><p>从数组存储的内存模型上看，“下标”确切的定义是“偏移”。如果用 a 来表示数组的首地址，那么数组第一个元素就是 a 偏移 0 个位置的地址即 a[0]。</p>
+<p>最主要的原因还是<strong>历史原因</strong>。</p>
+<h1 id="链表（上）：如何实现-LRU-缓存淘汰算法"><a href="#链表（上）：如何实现-LRU-缓存淘汰算法" class="headerlink" title="链表（上）：如何实现 LRU 缓存淘汰算法?"></a>链表（上）：如何实现 LRU 缓存淘汰算法?</h1><h2 id="链表-VS-数组性能大比拼"><a href="#链表-VS-数组性能大比拼" class="headerlink" title="链表 VS 数组性能大比拼"></a>链表 VS 数组性能大比拼</h2><table>
+<thead>
+<tr>
+<th>时间复杂度</th>
+<th>链表</th>
+<th>数组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入删除</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="啥是-LRU-缓存淘汰算法"><a href="#啥是-LRU-缓存淘汰算法" class="headerlink" title="啥是 LRU 缓存淘汰算法?"></a>啥是 LRU 缓存淘汰算法?</h2><p>缓存是一种提高数据读取性能的技术，在硬件设计、软件开发中都有着非常广泛的应用，比如常见的 CPU 缓存、数据库缓存、浏览器缓存等等。</p>
+<p>缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有三种：<strong>先进先出策略 FIFO（FirstIn，First Out）</strong>、<strong>最少使用策略 LFU（Least Frequently Used）</strong>、<strong>最近最少使用策略 LRU（Least Recently Used）</strong>。</p>
+<p>思路：</p>
+<p>维护一个有序单链表，越靠近链表尾部的数据时越早之前访问的。当有一个新的数据被访问时，我们从链表头开始顺序遍历链表。</p>
+<ol>
+<li>如果此数据之前已经被缓存在链表中了，我们遍历得到这个数据对应的结点，并将其从原来的位置删除，然后再插入到链表的头部。</li>
+<li><p>如果此数据没有在缓存链表中，又可以分为两种情况：</p>
+<ul>
+<li>如果此时缓存未满，则将此结点直接插入到链表的头部</li>
+<li>如果此时缓存已满，则链表尾结点删除，将新的数据结点插入链表的头部</li>
+</ul>
+</li>
+</ol>
+<h1 id="链表（下）：如何轻松写出正确的链表代码？"><a href="#链表（下）：如何轻松写出正确的链表代码？" class="headerlink" title="链表（下）：如何轻松写出正确的链表代码？"></a>链表（下）：如何轻松写出正确的链表代码？</h1><h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><ol>
+<li><p>理解指针或引用的含义</p>
+<p>将某个变量赋值给指针，实际上就是将这个变量的地址赋值给指针，或者反过来说，指针中存储了这个变量的内存地址，指向了这个变量，通过指针就能找到这个变量。</p>
+</li>
+<li><p>警惕指针丢失和内存泄漏</p>
+<p>举例：如下代码就会造成指针丢失。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;next = x;  // 将 p 的 next 指针指向 x 结点；</span><br><span class="line">x-&gt;next = p-&gt;next;  // 将 x 的结点的 next 指针指向 b 结点；</span><br></pre></td></tr></table></figure>
+<p>只要将两行代码顺序互换即可。</p>
+</li>
+</ol>
 
       
     </div>
@@ -694,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01-为什么要学习数据结构和算法？"><span class="nav-number">1.</span> <span class="nav-text">01 | 为什么要学习数据结构和算法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02-如何抓住重点，系统高效地学习数据结构与算法？"><span class="nav-number">2.</span> <span class="nav-text">02 | 如何抓住重点，系统高效地学习数据结构与算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习技巧："><span class="nav-number">2.0.1.</span> <span class="nav-text">学习技巧：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="nav-number">3.</span> <span class="nav-text">03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大-O-复杂度表示法"><span class="nav-number">3.1.</span> <span class="nav-text">大 O 复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">3.2.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见时间复杂度实例分析"><span class="nav-number">3.3.</span> <span class="nav-text">几种常见时间复杂度实例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂度分析"><span class="nav-number">3.4.</span> <span class="nav-text">空间复杂度分析</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要学习数据结构和算法？"><span class="nav-number">1.</span> <span class="nav-text">为什么要学习数据结构和算法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何抓住重点，系统高效地学习数据结构与算法？"><span class="nav-number">2.</span> <span class="nav-text">如何抓住重点，系统高效地学习数据结构与算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习技巧："><span class="nav-number">2.0.1.</span> <span class="nav-text">学习技巧：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="nav-number">3.</span> <span class="nav-text">复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大-O-复杂度表示法"><span class="nav-number">3.1.</span> <span class="nav-text">大 O 复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">3.2.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见时间复杂度实例分析"><span class="nav-number">3.3.</span> <span class="nav-text">几种常见时间复杂度实例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂度分析"><span class="nav-number">3.4.</span> <span class="nav-text">空间复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度"><span class="nav-number">4.</span> <span class="nav-text">复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组：为什么很多编程语言中数组都从-0-开始编号？"><span class="nav-number">5.</span> <span class="nav-text">数组：为什么很多编程语言中数组都从 0 开始编号？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念："><span class="nav-number">5.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#警惕数组的访问越界问题"><span class="nav-number">5.2.</span> <span class="nav-text">警惕数组的访问越界问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-小知识"><span class="nav-number">5.3.</span> <span class="nav-text">java 小知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解答开篇"><span class="nav-number">5.4.</span> <span class="nav-text">解答开篇</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链表（上）：如何实现-LRU-缓存淘汰算法"><span class="nav-number">6.</span> <span class="nav-text">链表（上）：如何实现 LRU 缓存淘汰算法?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链表-VS-数组性能大比拼"><span class="nav-number">6.1.</span> <span class="nav-text">链表 VS 数组性能大比拼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#啥是-LRU-缓存淘汰算法"><span class="nav-number">6.2.</span> <span class="nav-text">啥是 LRU 缓存淘汰算法?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链表（下）：如何轻松写出正确的链表代码？"><span class="nav-number">7.</span> <span class="nav-text">链表（下）：如何轻松写出正确的链表代码？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#技巧"><span class="nav-number">7.1.</span> <span class="nav-text">技巧</span></a></li></ol></li></div>
             
 
           </div>
@@ -729,7 +823,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.9k</span>
+    <span title="Site words total count">19.9k</span>
   
 </div>
 
