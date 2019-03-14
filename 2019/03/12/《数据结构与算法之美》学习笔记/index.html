@@ -88,7 +88,8 @@
 <meta property="og:description" content="一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure.jpg?raw=true">
-<meta property="og:updated_time" content="2019-03-12T15:30:16.366Z">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure_compare.jpg?raw=true">
+<meta property="og:updated_time" content="2019-03-14T01:10:26.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《数据结构与算法之美》学习笔记">
 <meta name="twitter:description" content="一直都想补补数据结构和算法的知识，前端时间在《极客时间》上看到《数据结构与算法之美》这门课好像挺火，于是就买了下来。学习的时候不妨做做笔记，也充实一下我这好久不更的博客。">
@@ -369,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.6k
                 </span>
               
 
@@ -385,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -474,7 +475,18 @@
 <p>分析：从代码中可以看出，变量 i 的值从 1 开始取，每循环一次就乘以 2。当大于 n 时，循环结束。相当于求 2^x=n，解得 x=log₂n，所以这段代码时间复杂度为 O(log₂n)。</p>
 <p>实际上，不管是以 2 为底、以 3 为底，还是以 10 为底，我们可以把所有对数阶的时间复杂度都记为 O(logn)。因为 log₃n=log₃2*log₂n，而 log₃2 是一个常量，可以忽略。</p>
 </li>
+<li><p>O(m+n)、O(m*n)</p>
+</li>
 </ol>
+<p>下面一段代码的复杂度由两个数据的规模来决定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int cal(int m, int n) &#123;</span><br><span class="line">  int sum_1 = 0;</span><br><span class="line">  int i = 1;</span><br><span class="line">  for (; i &lt; m; ++i) &#123;</span><br><span class="line">    sum_1 = sum_1 + i;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  int sum_2 = 0;</span><br><span class="line">  int j = 1;</span><br><span class="line">  for (; j &lt; n; ++j) &#123;</span><br><span class="line">    sum_2 = sum_2 + j;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return sum_1 + sum_2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码中可以看出，第一段代码复杂度为 m，第二段代码复杂度为 n。我们无法事先评估 m 和 n 哪个量级大，所以不能简单地使用加法法则省略其中一个，所以上段代码复杂度为 O(m+n)。此时 T1(m) + T2(n) = O(f(m) + g(n))。</p>
+<h2 id="空间复杂度分析"><a href="#空间复杂度分析" class="headerlink" title="空间复杂度分析"></a>空间复杂度分析</h2><p>前面讲过，<strong>时间复杂度表示算法的执行时间与数据规模之间的增长关系</strong>，类比一下，<strong>空间复杂度表示算法的存储空间与数据规模之间的增长关系</strong>。</p>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void print(int n) &#123;</span><br><span class="line">  int i = 0;</span><br><span class="line">  int[] a = new int[n];</span><br><span class="line">  for (i; i &lt;n; ++i) &#123;</span><br><span class="line">    a[i] = i * i;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (i = n-1; i &gt;= 0; --i) &#123;</span><br><span class="line">    print out a[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上段代码第二行申请了一个空间存储变量 i，但是他是常量阶，可以忽略。第三行代码申请了一个大小为 n 的 int 类型数组，除此之外其他代码没有占用更多空间，所以该段代码的空间复杂度为 O(n)。</p>
+<p>我们常见的空间复杂度就是 O(1)、O(n)、O(n2 )，像 O(logn)、O(nlogn) 这样的对数阶复杂度平时都用不到。而且，空间复杂度分析比时间复杂度分析要简单很多。所以，对于空间复杂度，掌握这些内容已经足够了。</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/data_structure_compare.jpg?raw=true" width="600"></p>
 
       
     </div>
@@ -682,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01-为什么要学习数据结构和算法？"><span class="nav-number">1.</span> <span class="nav-text">01 | 为什么要学习数据结构和算法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02-如何抓住重点，系统高效地学习数据结构与算法？"><span class="nav-number">2.</span> <span class="nav-text">02 | 如何抓住重点，系统高效地学习数据结构与算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习技巧："><span class="nav-number">2.0.1.</span> <span class="nav-text">学习技巧：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="nav-number">3.</span> <span class="nav-text">03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大-O-复杂度表示法"><span class="nav-number">3.1.</span> <span class="nav-text">大 O 复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">3.2.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见时间复杂度实例分析"><span class="nav-number">3.3.</span> <span class="nav-text">几种常见时间复杂度实例分析</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01-为什么要学习数据结构和算法？"><span class="nav-number">1.</span> <span class="nav-text">01 | 为什么要学习数据结构和算法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02-如何抓住重点，系统高效地学习数据结构与算法？"><span class="nav-number">2.</span> <span class="nav-text">02 | 如何抓住重点，系统高效地学习数据结构与算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习技巧："><span class="nav-number">2.0.1.</span> <span class="nav-text">学习技巧：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#03-复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？"><span class="nav-number">3.</span> <span class="nav-text">03 | 复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大-O-复杂度表示法"><span class="nav-number">3.1.</span> <span class="nav-text">大 O 复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">3.2.</span> <span class="nav-text">时间复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见时间复杂度实例分析"><span class="nav-number">3.3.</span> <span class="nav-text">几种常见时间复杂度实例分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂度分析"><span class="nav-number">3.4.</span> <span class="nav-text">空间复杂度分析</span></a></li></ol></li></div>
             
 
           </div>
@@ -717,7 +729,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.5k</span>
+    <span title="Site words total count">17.9k</span>
   
 </div>
 
