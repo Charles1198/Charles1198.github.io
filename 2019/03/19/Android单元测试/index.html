@@ -94,7 +94,13 @@
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-5.png?raw=true">
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-6.png?raw=true">
 <meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-7.png?raw=true">
-<meta property="og:updated_time" content="2019-03-19T06:07:41.623Z">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-11.png?raw=true">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-12.png?raw=true">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-13.png?raw=true">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-14.png?raw=true">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-15.png?raw=true">
+<meta property="og:image" content="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-15.png?raw=true">
+<meta property="og:updated_time" content="2019-03-19T07:09:00.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android单元测试">
 <meta name="twitter:description" content="在以前的项目中都没有写过测试，这几天事情不多，就来看看 Android 中测试的东西。">
@@ -380,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  703
+                  1.3k
                 </span>
               
 
@@ -396,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -438,11 +444,11 @@
 <h1 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h1><h2 id="对-presenter-的测试"><a href="#对-presenter-的测试" class="headerlink" title="对 presenter 的测试"></a>对 presenter 的测试</h2><ol>
 <li><p>新建测试类</p>
 <p>右键 Presenter 类 -&gt; Go To -&gt; Test -&gt; create new test</p>
-<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-1.png?raw=true" width="500"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-1.png?raw=true" width="600"></p>
 <p>弹出一个创建测试类对话框，然后勾选需要测试的方法（当然也可以自己手动创建方法）。然后 OK，选择 test 文件夹完成测试类创建。</p>
-<p> <img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-2.png?raw=true" width="500"></p>
-<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-3.png?raw=true" width="500"></p>
-<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-4.png?raw=true" width="500"></p>
+<p> <img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-2.png?raw=true" width="600"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-3.png?raw=true" width="600"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-4.png?raw=true" width="600"></p>
 <p>新建的测试类如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class NetworkPresenterTest &#123;</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void setUp() throws Exception &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void login() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -455,20 +461,55 @@
 </li>
 <li><p>编辑测试类</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class NetworkPresenterTest &#123;</span><br><span class="line"></span><br><span class="line">    // 测试的时候不会拿到 NetworkView，打上 @Mock 注解就不会报空指针</span><br><span class="line">    @Mock</span><br><span class="line">    private NetworkView networkView;</span><br><span class="line">    @Mock</span><br><span class="line">    private NetworkPresenter networkPresenter;</span><br><span class="line">    @Mock</span><br><span class="line">    private ApiManager apiManager;</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void setUp() throws Exception &#123;</span><br><span class="line">        MockitoAnnotations.initMocks(this);</span><br><span class="line"></span><br><span class="line">        networkPresenter = new NetworkPresenter(networkView, apiManager);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void login() &#123;</span><br><span class="line">        networkPresenter.login(&quot;1111&quot;, &quot;111&quot;);</span><br><span class="line">        verify(networkView).showMessage(&quot;邮箱格式错误&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="3">
+<li>执行测试</li>
+</ol>
 <p>选中类名右键 -&gt;run 即可运行测试。</p>
-<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-5.png?raw=true" width="500"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-5.png?raw=true" width="600"></p>
 <p>运行结果如预期：</p>
-<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-6.png?raw=true" width="500"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-6.png?raw=true" width="600"></p>
 <p>修改代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">networkPresenter.login(&quot;1111&quot;, &quot;111&quot;);</span><br><span class="line">为networkPresenter.login(&quot;1111@qq.com&quot;, &quot;111&quot;);</span><br></pre></td></tr></table></figure>
 <p>再次运行，运行结果出错，预期结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">networkView.showMessage(&quot;邮箱格式错误&quot;);</span><br></pre></td></tr></table></figure>
 <p>实际结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">networkView.showMessage(&quot;密码不足4位&quot;);</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-7.png?raw=true" width="500"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-7.png?raw=true" width="600"></p>
 <p><strong>至此还不能测试网络连接</strong>。</p>
-</li>
-</ul>
+<h2 id="对-Activity-的测试"><a href="#对-Activity-的测试" class="headerlink" title="对 Activity 的测试"></a>对 Activity 的测试</h2><ol>
+<li>新建测试类</li>
+</ol>
+<p>新建测试类流程与上一节相同，不同的是测试类要放在 src/androidtest 文件夹下</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-11.png?raw=true" width="600"></p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-12.png?raw=true" width="600"></p>
+<p>新建的测试类如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class NetworkActivityTest &#123;</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void setUp() throws Exception &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑测试类</li>
+</ol>
+<p>UI 测试这里用到的是 espresso，已经默认集成到 gradle 中了，还要再加个 rules：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">androidTestImplementation &apos;com.android.support.test:rules:0.5&apos;</span><br></pre></td></tr></table></figure>
+<p>页面：</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-13.png?raw=true" width="300"></p>
+<p>首先测试下页面显示是否正常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Before;</span><br><span class="line">import org.junit.Rule;</span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">// 这些依赖竟然不会自己添加，需要手动添加，坑</span><br><span class="line">import static android.support.test.espresso.Espresso.onView;</span><br><span class="line">import static android.support.test.espresso.assertion.ViewAssertions.matches;</span><br><span class="line">import static android.support.test.espresso.matcher.ViewMatchers.withId;</span><br><span class="line">import static android.support.test.espresso.matcher.ViewMatchers.withText;</span><br><span class="line"></span><br><span class="line">public class NetworkActivityTest &#123;</span><br><span class="line"></span><br><span class="line">    @Rule</span><br><span class="line">    public ActivityTestRule&lt;NetworkActivity&gt; rule = new ActivityTestRule&lt;&gt;(NetworkActivity.class);</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void setUp() throws Exception &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testButton() &#123;</span><br><span class="line">        // 测试登录按钮是不是显示“登录”</span><br><span class="line">        onView(withId(R.id.email_sign_in_button))</span><br><span class="line">                .check(matches(withText(&quot;登录&quot;)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行测试</li>
+</ol>
+<p>选中类名右键 -&gt;run 即可运行测试，提示选择模拟器，模拟器上登录页面一闪而过，控制台输出测试通过：</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-14.png?raw=true" width="600"></p>
+<p>有点不放心，修改下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testButton() &#123;</span><br><span class="line">    // 测试登录按钮文本是不是显示“登录”</span><br><span class="line">    onView(withId(R.id.email_sign_in_button))</span><br><span class="line">            .check(matches(withText(&quot;登录haha&quot;)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试没通过：</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-15.png?raw=true" width="600"></p>
+<p>现在我测试向邮箱和密码输入框输入文本，再模拟点击：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Before;</span><br><span class="line">import org.junit.Rule;</span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import static android.support.test.espresso.Espresso.onView;</span><br><span class="line">import static android.support.test.espresso.action.ViewActions.click;</span><br><span class="line">import static android.support.test.espresso.action.ViewActions.typeText;</span><br><span class="line">import static android.support.test.espresso.assertion.ViewAssertions.matches;</span><br><span class="line">import static android.support.test.espresso.matcher.ViewMatchers.withId;</span><br><span class="line">import static android.support.test.espresso.matcher.ViewMatchers.withText;</span><br><span class="line"></span><br><span class="line">public class NetworkActivityTest &#123;</span><br><span class="line"></span><br><span class="line">    @Rule</span><br><span class="line">    public ActivityTestRule&lt;NetworkActivity&gt; rule = new ActivityTestRule&lt;&gt;(NetworkActivity.class);</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void setUp() throws Exception &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">//    @Test</span><br><span class="line">//    public void testButton() &#123;</span><br><span class="line">//        onView(withId(R.id.email_sign_in_button))</span><br><span class="line">//                .check(matches(withText(&quot;登录&quot;)));</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testInputAndClick() &#123;</span><br><span class="line">        // 输入邮箱密码</span><br><span class="line">        onView(withId(R.id.email)).perform(typeText(&quot;111&quot;));</span><br><span class="line">        onView(withId(R.id.password)).perform(typeText(&quot;111&quot;));</span><br><span class="line">        // 点击登录</span><br><span class="line">        onView(withId(R.id.email_sign_in_button)).perform(click());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>开始测试，模拟器上登录页面自动打开，自动输入了邮箱和密码，自动点击了登录按钮，弹出 toast 显示“邮箱格式不正确”。符合预期，控制台打印通过。</p>
+<p><img src="https://github.com/Charles1198/Charles1198.github.io/blob/master/image/android-test-15.png?raw=true" width="600"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>至此算是学会了测试的皮毛，有空了再补充下网络测试。</p>
+<p>未完待续</p>
 
       
     </div>
@@ -676,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目代码"><span class="nav-number">2.</span> <span class="nav-text">项目代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试代码"><span class="nav-number">3.</span> <span class="nav-text">测试代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对-presenter-的测试"><span class="nav-number">3.1.</span> <span class="nav-text">对 presenter 的测试</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目代码"><span class="nav-number">2.</span> <span class="nav-text">项目代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试代码"><span class="nav-number">3.</span> <span class="nav-text">测试代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对-presenter-的测试"><span class="nav-number">3.1.</span> <span class="nav-text">对 presenter 的测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对-Activity-的测试"><span class="nav-number">3.2.</span> <span class="nav-text">对 Activity 的测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -711,7 +752,7 @@
     
       <span class="post-meta-item-text">文章字数&#58;</span>
     
-    <span title="文章字数">25.6k</span>
+    <span title="文章字数">26.2k</span>
   
 </div>
 
