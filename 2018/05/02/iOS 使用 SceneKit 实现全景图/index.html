@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="iOS,SceneKit,">
+  <meta name="keywords" content="iOS,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="项目里碰到了展示全景图的需求，以前没做过，google 了一下已经有不少现成的库可以拿来用了，不过有前辈提到可以用 SceneKit 来实现，刚好去年做 AR 的时候用过 SceneKit，一下子来了思路，在这里记录一下。">
-<meta name="keywords" content="iOS,SceneKit">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 使用 SceneKit 实现全景图">
 <meta property="og:url" content="http://jiayueji.cn/2018/05/02/iOS 使用 SceneKit 实现全景图/index.html">
@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/2/1631ec9993b51acb?w=1000&h=500&f=jpeg&s=217995">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/2/1631e7e10ab93cad?w=320&h=427&f=gif&s=3785209">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/2/1631f469db44aa9e?w=320&h=427&f=gif&s=3422425">
-<meta property="og:updated_time" content="2019-03-16T13:57:17.941Z">
+<meta property="og:updated_time" content="2019-03-19T07:47:48.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 使用 SceneKit 实现全景图">
 <meta name="twitter:description" content="项目里碰到了展示全景图的需求，以前没做过，google 了一下已经有不少现成的库可以拿来用了，不过有前辈提到可以用 SceneKit 来实现，刚好去年做 AR 的时候用过 SceneKit，一下子来了思路，在这里记录一下。">
@@ -423,7 +423,7 @@
 <p>此时把左右反向的图片“贴”到球体上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sphere.firstMaterial?.diffuse.contents = flipImageLeftRight(UIImage.init(named: &quot;全景图名&quot;))</span><br></pre></td></tr></table></figure>
 <p>全景图长这样：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/2/1631ec9993b51acb?w=1000&amp;h=500&amp;f=jpeg&amp;s=217995" alt=""><br>快看下效果吧（实际还是很流畅的，gif 效果有卡顿）：<br><img src="https://user-gold-cdn.xitu.io/2018/5/2/1631e7e10ab93cad?w=320&amp;h=427&amp;f=gif&amp;s=3785209" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/2/1631ec9993b51acb?w=1000&amp;h=500&amp;f=jpeg&amp;s=217995" alt=""> 快看下效果吧（实际还是很流畅的，gif 效果有卡顿）： <img src="https://user-gold-cdn.xitu.io/2018/5/2/1631e7e10ab93cad?w=320&amp;h=427&amp;f=gif&amp;s=3785209" alt=""></p>
 <h2 id="悬浮广告"><a href="#悬浮广告" class="headerlink" title="悬浮广告"></a>悬浮广告</h2><p>除了全景图，还有个需求就是在全景图适当的位置显示广告图标，点击后会出现一张海报。要求广告图标在全景图视角变化的时候跟着动。</p>
 <p>这个其实也不难，只要知道需要放置广告的位置坐标，在全景图视角变化的同时移动图标让图标和目标位置同步就好。</p>
 <p>但是我怎么知道全景图视角怎样变化呢（其实是相机 Node 旋转角度在变化）？我想通过相机旋转时监听旋转角度但是没找到监听方法，如果有谁知道望告知，十分感谢！</p>
@@ -456,8 +456,6 @@
         <div class="post-tags">
           
             <a href="/tags/iOS/" rel="tag"># iOS</a>
-          
-            <a href="/tags/SceneKit/" rel="tag"># SceneKit</a>
           
         </div>
       
@@ -590,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -686,7 +684,7 @@
     
       <span class="post-meta-item-text">文章字数&#58;</span>
     
-    <span title="文章字数">26.2k</span>
+    <span title="文章字数">27.8k</span>
   
 </div>
 
